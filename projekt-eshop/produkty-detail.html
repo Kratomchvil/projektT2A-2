@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Standard Drum Set — DrumShop</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container wrap">
+      <div class="brand"><a href="index.html" class="logo"><img src="../assets/logo/logo-main.png" alt="DrumShop logo" style="height:40px; display:block"></a><span class="muted">Bicí nástroje & příslušenství</span></div>
+      <button class="hamburger" aria-controls="main-nav" aria-expanded="false">☰</button>
+      <div class="search"><form action="vyhledavani.html" method="get"><input type="search" name="q" placeholder="Hledat..."></form></div>
+      <nav id="main-nav" class="site-nav">
+        <a href="produkty.html">Produkty</a>
+        <a href="o-nas.html">O nás</a>
+        <a href="kosik-krok1.html" class="btn-cart cart-badge"><img src="../assets/logo/shopping-cart.png" alt="Košík" style="height:18px"><span class="muted" style="margin-left:6px">Košík</span><span class="cart-count">0</span></a>
+      </nav>
+      <div class="hamburger-menu" aria-hidden="true">
+        <a href="index.html">Domů</a>
+        <a href="kategorie.html">Kategorie</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="cart-steps">
+      <div class="step">1. Košík</div>
+      <div class="step">2. Doprava</div>
+      <div class="step">3. Platba</div>
+    </nav>
+
+    <section class="product-detail">
+      <div class="card">
+        <img src="../assets/images/drum1.jpg" alt="Standard Drum Set">
+      </div>
+      <aside class="card">
+        <h1>Standard Drum Set</h1>
+        <div class="muted">Plná sada pro začátečníky i pokročilé.</div>
+        <div class="price">12 990 Kč</div>
+        <p>Obsah: basový buben, tomy, small tom, hi-hat, činely, stojany, sedačka.</p>
+        <form action="kosik-krok1.html" method="get">
+          <label>Množství <input type="number" name="qty" value="1" min="1" max="999" step="1"></label>
+          <input type="hidden" name="product" value="Standard Drum Set">
+          <div style="margin-top:1rem">
+            <button class="btn btn-primary">Přidat do košíku</button>
+          </div>
+        </form>
+      </aside>
+    </section>
+  </main>
+</main>
+
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/header-nav.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const form = document.querySelector('form[action="kosik-krok1.html"]');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const fd = new FormData(form);
+        const name = fd.get('product') || document.querySelector('h1')?.textContent || 'Produkt';
+        const qty = parseInt(fd.get('qty')||1,10) || 1;
+        const img = document.querySelector('.product-detail img')?.src || '';
+        if(window.cartHelpers && typeof window.cartHelpers.addItem === 'function'){
+          window.cartHelpers.addItem({ name: name, img: img, qty: qty });
+        }
+        window.location.href = 'kosik-krok1.html';
+      });
+    });
+  </script>
+  <footer class="site-footer"><div class="container">© 2026 DrumShop</div></footer>
+</body>
+</html>

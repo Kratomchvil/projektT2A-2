@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DrumShop — Bicí nástroje</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container wrap">
+      <div class="brand">
+        <a href="index.html" class="logo"><img src="../assets/logo/logo-main.png" alt="DrumShop logo" style="height:40px; display:block"></a>
+          <span class="muted">Bicí nástroje & příslušenství</span>
+      </div>
+      <button class="hamburger" aria-controls="main-nav" aria-expanded="false">☰</button>
+      <div class="search">
+        <form action="vyhledavani.html" method="get">
+          <input type="search" name="q" placeholder="Hledat...">
+        </form>
+      </div>
+      <nav id="main-nav" class="site-nav">
+        <a href="produkty.html">Produkty</a>
+        <a href="o-nas.html">O nás</a>
+        <a href="kosik-krok1.html" class="btn-cart cart-badge"><img src="/assets/logo/shopping-cart.png" alt="Košík" style="height:18px"><span class="muted" style="margin-left:6px">Košík</span><span class="cart-count">0</span></a>
+      </nav>
+      <div class="hamburger-menu" aria-hidden="true">
+        <a href="index.html">Domů</a>
+        <a href="kategorie.html">Kategorie</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="left">
+        <h1>Vyberte si svůj nový bicí set</h1>
+        <p class="muted">Široká nabídka pro začátečníky i profesionály — sety, činely, paličky a více.</p>
+        <p><a href="produkty.html" class="btn btn-primary">Prohlédnout produkty</a></p>
+      </div>
+      <div class="right">
+        <img src="https://i.pinimg.com/originals/ea/78/84/ea7884e6a9839c5d51155cc7d432753e.jpg" alt="Drum set">
+      </div>
+    </section>
+
+    <section class="featured">
+      <h2>Nejprodávanější</h2>
+      <div class="product-list">
+        <!-- product cards -->
+        <div class="card product-card">
+          <a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_6/102066_img_67a62d6517b67_1.jpg" alt="Drum" width="350px"></a>
+          <h3 class="title">Standard Drum Set</h3>
+          <div class="muted">5-dílný set</div>
+          <div class="price">12 990 Kč</div>
+          <a href="produkty-detail.html" class="btn btn-primary">Zobrazit</a>
+        </div>
+        <div class="card product-card">
+          <a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_15/74815_img_4e8ec1147ce18_1.jpg" alt="Drum" width="350px"></a>
+          <h3 class="title">Compact Jazz Set</h3>
+          <div class="muted">Pro malé prostory</div>
+          <div class="price">9 490 Kč</div>
+          <a href="produkty-detail.html" class="btn btn-primary">Zobrazit</a>
+        </div>
+        <div class="card product-card">
+          <a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_7/99027_img_603d06880c297_debutkit.jpg" alt="Drum"></a>
+          <h3 class="title">Elektronický set</h3>
+          <div class="muted">Tichý trénink</div>
+          <div class="price">18 900 Kč</div>
+          <a href="produkty-detail.html" class="btn btn-primary">Zobrazit</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap">
+        <div>
+          <strong>DrumShop</strong>
+          <div class="muted">Prodej bicích nástrojů — Praha</div>
+        </div>
+        <div class="muted">© 2026 DrumShop</div>
+      </div>
+    </div>
+  </footer>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/product-modal.js"></script>
+  <script src="../assets/js/header-nav.js"></script>
+
+  <!-- Modal container for product quick view -->
+  <div id="product-modal" aria-hidden="true" style="display:none">
+    <div class="modal-overlay"></div>
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Zavřít">✕</button>
+      <div class="modal-content">
+        <div class="modal-image"><img src="" alt=""></div>
+        <div class="modal-info">
+          <h3 class="modal-title"></h3>
+          <div class="modal-desc muted"></div>
+          <div class="modal-price" style="margin-top:0.5rem;font-weight:700"></div>
+          <div style="margin-top:1rem"><a class="btn btn-primary modal-buy" href="#">Koupit</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #product-modal { position:fixed; inset:0; z-index:1200; display:flex; align-items:center; justify-content:center; }
+    #product-modal[aria-hidden="true"] { display:none }
+    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); }
+    .modal-panel { position:relative; background:var(--bg, #111); color:var(--fg,#fff); border-radius:8px; padding:1rem; width:min(900px,95%); max-height:85vh; overflow:auto; box-shadow:0 8px 30px rgba(0,0,0,0.6); }
+    .modal-content { display:flex; gap:1rem; align-items:flex-start }
+    .modal-image img { max-width:320px; width:100%; height:auto; display:block; border-radius:6px }
+    .modal-close { position:absolute; top:8px; right:8px; background:transparent; border:0; color:inherit; font-size:1.2rem; cursor:pointer }
+    @media(max-width:700px){ .modal-content{flex-direction:column} .modal-image img{max-width:100%} }
+  </style>
+  </body>
+  </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrumShop</title>
+</head>
+<body>
+    
+</body>
+</html>

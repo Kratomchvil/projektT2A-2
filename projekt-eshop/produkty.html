@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Produkty — DrumShop</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+  <!-- header -->
+  <header class="site-header">
+    <div class="container wrap">
+      <div class="brand">
+        <a href="index.html" class="logo"><img src="../assets/logo/logo-main.png" alt="DrumShop logo" style="height:40px; display:block"></a>
+      </div>
+      <button class="hamburger" aria-controls="main-nav" aria-expanded="false">☰</button>
+      <div class="search">
+        <form action="vyhledavani.html" method="get"><input type="search" name="q" placeholder="Hledat..."></form>
+      </div>
+      <nav id="main-nav" class="site-nav">
+        <a href="produkty.html">Produkty</a>
+        <a href="o-nas.html">O nás</a>
+        <a href="kosik-krok1.html" class="btn-cart cart-badge"><img src="/assets/logo/shopping-cart.png" alt="Košík" style="height:18px"><span class="muted" style="margin-left:6px">Košík</span><span class="cart-count">0</span></a>
+      </nav>
+      <div class="hamburger-menu" aria-hidden="true">
+        <a href="index.html">Domů</a>
+        <a href="kategorie.html">Kategorie</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Produkty</h1>
+    <div style="display:flex; gap:1rem; margin-top:1rem;">
+      <aside class="product-filter-aside">
+        <div class="card">
+          <h4>Filtr</h4>
+          <div class="muted">Kategorie</div>
+          <ul>
+            <li><a href="?category=sets" data-filter="sets">Sety</a></li>
+            <li><a href="?category=cymbals" data-filter="cymbals">Činely</a></li>
+                <!-- 'Bubny' removed per request -->
+            <li><a href="?category=hardware" data-filter="hardware">Hardware</a></li>
+            <li><a href="?category=sticks" data-filter="sticks">Paličky / kartáče</a></li>
+            <li><a href="?category=accessories" data-filter="accessories">Příslušenství</a></li>
+            <li><a href="?category=bags" data-filter="bags">Obaly</a></li>
+            <li><a href="?category=all" data-filter="all">Zobrazit vše</a></li>
+          </ul>
+        </div>
+      </aside>
+      <section style="flex:1">
+        <div class="product-list">
+          <!-- 30 product cards with data-category -->
+          <div class="card product-card" data-category="sets"><a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_6/102066_img_67a62d6517b67_1.jpg" alt="Standard Drum Set"></a><h3 class="title">Standard Drum Set</h3><div class="muted">5-dílný akustický set</div><div class="price">12 990 Kč</div><a href="produkty-detail.html?product=Standard+Drum+Set" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="sets"><a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_15/74815_img_4e8ec1147ce18_1.jpg" alt="Compact Jazz Set"></a><h3 class="title">Compact Jazz Set</h3><div class="muted">Pro menší prostory</div><div class="price">9 490 Kč</div><a href="produkty-detail.html?product=Compact+Jazz+Set" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="sets"><a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_7/99027_img_603d06880c297_debutkit.jpg" alt="Elektronický set"></a><h3 class="title">Elektronický set</h3><div class="muted">Tichý trénink, výstupy</div><div class="price">18 900 Kč</div><a href="produkty-detail.html?product=Elektronicky+set" class="btn btn-primary">Koupit</a></div>
+
+          <div class="card product-card" data-category="drums"><a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_1/100381_img_63e242fa0a25a_mpnmp3600bmb.png" alt="Snare Drum"></a><h3 class="title">MAPEX</h3><div class="muted">MPX Maple/poplar 13x6"</div><div class="price">3 490 Kč</div><a href="produkty-detail.html?product=MAPEX+Snare" class="btn btn-primary">Koupit</a></div>
+
+          <div class="card product-card" data-category="cymbals"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/ESHOP_CZ/nahled_v5x/0/638769502282766667/cb8aae1a/65356295/zildjian-14-s-series-mastersound-hi-hat.avif" alt="Hi-Hat 14"></a><h3 class="title">Zildjian Hit-Hat 14"</h3><div class="muted">Pečlivě vysoustružené činely mají bohatý hammering a briliantový povrch, který otvírá jejich zvuk a nabízí jasný, třpytivý tón.</div><div class="price">5 290 Kč</div><a href="produkty-detail.html?product=Hi-Hat+14" class="btn btn-primary">Koupit</a></div>
+
+          <div class="card product-card" data-category="cymbals"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/ESHOP_CZ/nahled_v5x/0/636707045959330000/bab827b3/64281679/zildjian-16-k-custom-dark-crash.avif" alt="Crash 16"></a><h3 class="title">Zildjian Crash 16"</h3><div class="muted">Zvuk činelu z řady je hluboký, teplý a expresivní, ale přes svůj temný charakter se prosadí v mnoha žánrech.</div><div class="price">9 290 Kč</div><a href="produkty-detail.html?product=Crash+16" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="cymbals"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/638336669313730000/a23c35c8/65159107/zildjian-20-s-dark-ride.avif" alt="Ride 20"></a><h3 class="title">Zildjian Ride 20"</h3><div class="muted">Stabilní rytmický zvuk</div><div class="price">3 990 Kč</div><a href="produkty-detail.html?product=Ride+20" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="cymbals"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/636697654664330000/cc3d10b3/31061748/meinl-8-hcs-splash.avif" alt="Splash 8"></a><h3 class="title">Meinl Splash 8"</h3><div class="muted">Krátký jasný zásah</div><div class="price">1 190 Kč</div><a href="produkty-detail.html?product=Splash+8" class="btn btn-primary">Koupit</a></div>
+
+          <div class="card product-card" data-category="cymbals"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/636706324694930000/efbeb4d4/53148637/meinl-18-classics-custom-extreme-metal-china.avif" alt="China 18"></a><h3 class="title">Meinl China 18"</h3><div class="muted">Exotický zahuhlý tón</div><div class="price">3 290 Kč</div><a href="produkty-detail.html?product=China+18" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="sticks"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/637090912531470000/89e531f4/64699762/vic-firth-5a-4-pack.avif" alt="Drumsticks Pro"></a><h3 class="title">Vic Firth Drumsticks</h3><div class="muted">Hickory paličky, pár</div><div class="price">290 Kč</div><a href="produkty-detail.html?product=Drumsticks+Pro" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="hardware"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/638918195460166667/22e37a34/65405937/drax-dts171.avif" alt="Drum Throne"></a><h3 class="title">DraX židlička</h3><div class="muted">Pevné a pohodlné sedlo</div><div class="price">1 090 Kč</div><a href="produkty-detail.html?product=Drum+Throne" class="btn btn-primary">Koupit</a></div>
+
+          <div class="card product-card" data-category="hardware"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/637824193914200000/22dbdce7/64968649/tama-hp30tw.avif" alt="Double Bass Pedal"></a><h3 class="title">Tema Double Bass Pedal</h3><div class="muted">Pro dvounohou basu</div><div class="price">2 990 Kč</div><a href="produkty-detail.html?product=Double+Bass+Pedal" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="cymbals"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/velky_v2/na/638744450020033333/7130ee3b/65337870/zildjian-k-sweet-cymbal-set.avif" alt="Cymbal Pack"></a><h3 class="title">Zildjian Cimbal Pack</h3><div class="muted">Crash (2x) + Ride + Hi-Hat</div><div class="price">37 290 Kč</div><a href="produkty-detail.html?product=Cymbal+Pack" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="hardware"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/638523939710933333/86225325/65237901/mapex-hp2505thardware-set.avif" alt="Hardware Pack"></a><h3 class="title">MapeX Hardware Pack</h3><div class="muted">Stojany a uchycení</div><div class="price">3 190 Kč</div><a href="produkty-detail.html?product=Hardware+Pack" class="btn btn-primary">Koupit</a></div>
+
+          <div class="card product-card" data-category="accessories"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/636705316494700000/4c4b3bf5/40635412/vic-firth-pad12.avif" alt="Practice Pad"></a><h3 class="title">Vic Firth Practice Pad</h3><div class="muted">Tichý tréninkový pad</div><div class="price">490 Kč</div><a href="produkty-detail.html?product=Practice+Pad" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="bags"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/638290943718100000/45846823/65141209/mapex-db-t24204-45.avif" alt="Drum Bag"></a><h3 class="title">MapeX Drum Bag Set</h3><div class="muted">Přepravní obal pro set</div><div class="price">990 Kč</div><a href="produkty-detail.html?product=Drum+Bag" class="btn btn-primary">Koupit</a></div>
+
+          <div class="card product-card" data-category="bags"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/ESHOP_CZ/nahled_v5x/0/638574229456866667/50497b3c/65266119/stefy-line-set3-200-line-drum-set-bags.avif" alt="Cymbal Bag"></a><h3 class="title">Cymbal Bag</h3><div class="muted">Ochranný obal na činely</div><div class="price">790 Kč</div><a href="produkty-detail.html?product=Cymbal+Bag" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="accessories"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/637012246851730000/2073b8c8/64678979/vic-firth-vickey2.avif" alt="Drum Key"></a><h3 class="title">Vic Firth Drum Key</h3><div class="muted">Nástroj pro ladění</div><div class="price">99 Kč</div><a href="produkty-detail.html?product=Drum+Key" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="sticks"><a class="thumb" href="produkty-detail.html"><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/637874389004770000/c20e5eff/64985908/sela-straw-brushes-180.avif" alt="Brushes"></a><h3 class="title">Sela Brushes</h3><div class="muted">Kartáče na jazzový styl</div><div class="price">249 Kč</div><a href="produkty-detail.html?product=Brushes" class="btn btn-primary">Koupit</a></div>
+
+          <div class="card product-card" data-category="sets"><a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_18/101898_img_6747409fdff85_img_2042.jpg" alt="Studio Kit"></a><h3 class="title">MAPEX</h3><div class="muted">MAPEX Comet BD20, T10, 12, F14, SD14</div><div class="price">15 490 Kč</div><a href="produkty-detail.html?product=Studio+Kit" class="btn btn-primary">Koupit</a></div>
+
+          <div class="card product-card" data-category="sets"><a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_16/93716_img_5a04459b5699d_p1.jpg" alt="Vintage Kit"></a><h3 class="title">PEARL</h3><div class="muted">PEARL Masterworks Heritage BD22, T10, 12, F16</div><div class="price">119 000 Kč</div><a href="produkty-detail.html?product=Vintage+Kit" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="sets"><a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_2/101362_img_67ebf61596e4d_11.jpg" alt="Junior Kit"></a><h3 class="title">DW</h3><div class="muted">DW DESIGN SERIES BD22, T10, 12, F14, 16 Limited Edition</div><div class="price">59 990 Kč</div><a href="produkty-detail.html?product=Junior+Kit" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="sets"><a class="thumb" href="produkty-detail.html"><img src="https://www.drumcenter.cz/bin/goods_images/produkt_5/99525_img_61b70b5f207e8_aq1_studio_pw_1.jpg" alt="Pro Series Kit"></a><h3 class="title">SONOR</h3><div class="muted">SONOR AQ1 BD20, T10, 12, F14, SD14</div><div class="price">39 990 Kč</div><a href="produkty-detail.html?product=Pro+Series+Kit" class="btn btn-primary">Koupit</a></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 DrumShop</div>
+  </footer>
+  <script src="../assets/js/filter.js"></script>
+  <script src="../assets/js/cart.js"></script>
+  <script src="../assets/js/product-modal.js"></script>
+  <script src="../assets/js/header-nav.js"></script>
+
+  <!-- Modal container for product quick view -->
+  <div id="product-modal" aria-hidden="true" style="display:none">
+    <div class="modal-overlay"></div>
+    <div class="modal-panel">
+      <button class="modal-close" aria-label="Zavřít">✕</button>
+      <div class="modal-content">
+        <div class="modal-image"><img src="" alt=""></div>
+        <div class="modal-info">
+          <h3 class="modal-title"></h3>
+          <div class="modal-desc muted"></div>
+          <div class="modal-price" style="margin-top:0.5rem;font-weight:700"></div>
+          <div style="margin-top:1rem"><a class="btn btn-primary modal-buy" href="#">Koupit</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #product-modal { position:fixed; inset:0; z-index:1200; display:flex; align-items:center; justify-content:center; }
+    #product-modal[aria-hidden="true"] { display:none }
+    .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); }
+    .modal-panel { position:relative; background:var(--bg, #111); color:var(--fg,#fff); border-radius:8px; padding:1rem; width:min(900px,95%); max-height:85vh; overflow:auto; box-shadow:0 8px 30px rgba(0,0,0,0.6); }
+    .modal-content { display:flex; gap:1rem; align-items:flex-start }
+    .modal-image img { max-width:320px; width:100%; height:auto; display:block; border-radius:6px }
+    .modal-close { position:absolute; top:8px; right:8px; background:transparent; border:0; color:inherit; font-size:1.2rem; cursor:pointer }
+    @media(max-width:700px){ .modal-content{flex-direction:column} .modal-image img{max-width:100%} }
+  </style>
+</body>
+</html>

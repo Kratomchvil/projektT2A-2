@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Košík — DrumShop</title>
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container wrap">
+      <div class="brand"><a href="index.html" class="logo"><img src="../assets/logo/logo-main.png" alt="DrumShop logo" style="height:40px; display:block"></a></div>
+      <nav class="site-nav">
+        <a href="produkty.html">Produkty</a>
+        <a href="kategorie.html">Kategorie</a>
+        <a href="kosik-krok1.html" class="cart-badge btn-cart"><img src="../assets/logo/shopping-cart.png" alt="Košík" style="height:18px"><span class="muted" style="margin-left:6px">Košík</span><span class="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Košík — 1. rekapitulace</h1>
+    <div style="display:flex; gap:1rem; margin-top:1rem">
+      <section style="flex:1">
+        <div id="cart-items"></div>
+        <div style="margin-top:1rem">
+          <a href="produkty.html" class="btn btn-ghost">Pokračovat v nákupu</a>
+        </div>
+      </section>
+      <aside style="width:320px">
+        <div class="cart-summary card"></div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="../assets/js/cart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      if(!window.cartHelpers) return;
+      const container = document.getElementById('cart-items');
+      const summary = document.querySelector('.cart-summary');
+      function render(){
+        const items = window.cartHelpers.getCart();
+        container.innerHTML = '';
+        if(!items || items.length===0){
+          container.innerHTML = '<div class="card muted">V košíku nejsou žádné položky.</div>';
+          summary.innerHTML = '<div class="card"><h4>Souhrn</h4><div>Počet položek: 0</div></div>';
+          window.cartHelpers.renderCount();
+          return;
+        }
+        items.forEach((it, idx)=>{
+          const el = document.createElement('div');
+          el.className = 'card';
+          const img = it.img ? `<div style="width:80px; height:80px; overflow:hidden; flex:0 0 80px; margin-right:0.75rem"><img src="${it.img}" alt="${escapeHtml(it.name)}" style="width:100%; height:100%; object-fit:cover; display:block"></div>` : '';
+          el.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center">
+              <div style="display:flex; align-items:center">
+                ${img}
+                <div>
+                  <strong>${escapeHtml(it.name)}</strong>
+                  <div class="muted">Počet: <span class="item-qty">${it.qty}</span></div>
+                </div>
+              </div>
+              <div style="display:flex; gap:0.5rem; align-items:center">
+                <button class="btn btn-ghost btn-decrease" data-idx="${idx}">-</button>
+                <button class="btn btn-ghost btn-increase" data-idx="${idx}">+</button>
+                <button class="btn btn-danger btn-remove" data-idx="${idx}">Odstranit</button>
+              </div>
+            </div>
+          `;
+          container.appendChild(el);
+        });
+        const total = window.cartHelpers.totalCount();
+        summary.innerHTML = `
+          <div class="card">
+            <h4>Souhrn</h4>
+            <div>Počet položek: <strong>${total}</strong></div>
+            <div style="margin-top:1rem"><a class="btn btn-primary" href="kosik-krok2.html">Pokračovat k dopravě</a></div>
+          </div>
+        `;
+        window.cartHelpers.renderCount();
+      }
+
+      function escapeHtml(str){ return String(str).replace(/[&<>\"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+
+      // delegate buttons
+      document.addEventListener('click', function(e){
+        const inc = e.target.closest('.btn-increase');
+        const dec = e.target.closest('.btn-decrease');
+        const rem = e.target.closest('.btn-remove');
+        if(inc || dec || rem){
+          const idx = parseInt((inc||dec||rem).getAttribute('data-idx'),10);
+          const cart = window.cartHelpers.getCart();
+          if(!cart || !cart[idx]) return;
+          if(inc){ cart[idx].qty = (cart[idx].qty||0) + 1; }
+          if(dec){ cart[idx].qty = Math.max(0, (cart[idx].qty||0) - 1); }
+          if(rem){ cart.splice(idx,1); }
+          // remove zero-qty items
+          const cleaned = cart.filter(i=> (i.qty||0) > 0);
+          window.cartHelpers.saveCart(cleaned);
+          render();
+        }
+      });
+
+      render();
+    });
+  </script>
+
+  <footer class="site-footer"><div class="container">© 2026 DrumShop</div></footer>
+</body>
+</html>

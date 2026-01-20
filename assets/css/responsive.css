@@ -1,0 +1,14 @@
+/* responsive.css */
+@media (max-width: 900px){
+  .grid.cols-3{ grid-template-columns: repeat(2,1fr) }
+  .product-list{ grid-template-columns: repeat(2,1fr) }
+  .product-detail{ grid-template-columns: 1fr }
+  .hero{ flex-direction:column }
+  .site-header .wrap{ flex-direction:column; align-items:flex-start }
+}
+@media (max-width:600px){
+  .grid.cols-3{ grid-template-columns: 1fr }
+  .product-list{ grid-template-columns: 1fr }
+  nav.site-nav{ flex-wrap:wrap; gap:0.5rem }
+  .search{ order:3; width:100% }
+}
