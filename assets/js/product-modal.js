@@ -58,20 +58,67 @@ document.addEventListener('DOMContentLoaded', function(){
     openModal({ title, desc, price, img, href });
   });
   
-  // when user clicks Buy inside modal, add correct product to cart and then go to cart
+  // when user clicks Buy inside modal, add correct product to cart and show notification
   if(buyBtn){
     buyBtn.addEventListener('click', function(e){
       e.preventDefault();
       try{
         if(window.cartHelpers && typeof window.cartHelpers.addItem === 'function'){
           const info = modal._current || {};
-          window.cartHelpers.addItem({ name: info.title || titleEl.textContent, img: info.img || imgEl.src, qty: 1 });
+          const price = priceEl.textContent || '0 Kč';
+          window.cartHelpers.addItem({ name: info.title || titleEl.textContent, img: info.img || imgEl.src, qty: 1, price: price });
+          // show notification instead of redirecting
+          showNotification(info.title || titleEl.textContent);
         }
       }catch(err){}
-      // navigate to buy href (built earlier)
-      var target = buyBtn.getAttribute('href') || '#';
-      if(target && target !== '#') window.location.href = target;
     });
+  }
+
+  // notification function
+  function showNotification(productName){
+    // remove existing notification if any
+    const existing = document.querySelector('.cart-notification');
+    if(existing) existing.remove();
+    
+    const notification = document.createElement('div');
+    notification.className = 'cart-notification';
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4CAF50;
+      color: white;
+      padding: 16px 24px;
+      border-radius: 4px;
+      z-index: 10000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      animation: slideIn 0.3s ease-out;
+    `;
+    notification.textContent = productName + ' byl přidán do košíku';
+    document.body.appendChild(notification);
+    
+    // remove notification after 3 seconds
+    setTimeout(() => {
+      notification.style.animation = 'slideOut 0.3s ease-out';
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
+  }
+
+  // add animations if not already in document
+  if(!document.querySelector('style[data-cart-notify]')){
+    const style = document.createElement('style');
+    style.setAttribute('data-cart-notify', 'true');
+    style.textContent = `
+      @keyframes slideIn {
+        from { transform: translateX(400px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(400px); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
   }
 
   // also intercept direct .btn-primary clicks inside product cards (in case user wants instant add)
@@ -82,11 +129,12 @@ document.addEventListener('DOMContentLoaded', function(){
     if(!card) return;
     const href = direct.getAttribute('href') || '';
     const title = (card.querySelector('.title')||{}).textContent || (card.querySelector('img')||{}).alt || '';
+    const price = (card.querySelector('.price')||{}).textContent || '';
     const img = (card.querySelector('img')||{}).src || '';
     // if link points directly to kosik (or explicit intent), add item and navigate
     if(href && href.includes('kosik')){
       e.preventDefault();
-      try{ if(window.cartHelpers) window.cartHelpers.addItem({ name: title, img: img, qty: 1 }); }catch(e){}
+      try{ if(window.cartHelpers) window.cartHelpers.addItem({ name: title, img: img, qty: 1, price: price }); }catch(e){}
       window.location.href = href;
       return;
     }
