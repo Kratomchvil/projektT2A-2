@@ -1,4 +1,3 @@
-/* components.css */
 @import url('variables.css');
 
 .card{ background:linear-gradient(180deg,var(--card), rgba(11,18,32,0.95)); padding:1rem; border-radius:var(--radius); box-shadow:var(--shadow); }

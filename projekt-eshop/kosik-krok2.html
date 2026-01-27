@@ -11,17 +11,18 @@
 <body>
   <header class="site-header">
     <div class="container wrap">
-      <div class="brand"><a href="index.html" class="logo"><img src="../assets/logo/logo-main.png" alt="DrumShop logo" style="height:40px; display:block"></a><span class="muted">Bicí nástroje & příslušenství</span></div>
+      <a href="kosik-krok1.html" class="mobile-cart cart-badge"><img src="../assets/logo/shopping-cart.png" alt="Košík" style="height:20px"><span class="cart-count">0</span></a>
+      <div class="brand"><a href="index.html" class="logo"><img src="../assets/logo/logo-main.png" alt="DrumShop logo" style="height:40px; display:block"></a><span class="muted brand-text"><b> DrumShop</b></span></div>
       <button class="hamburger" aria-controls="main-nav" aria-expanded="false">☰</button>
-      <div class="search"><form action="vyhledavani.html" method="get"><input type="search" name="q" placeholder="Hledat..."></form></div>
       <nav id="main-nav" class="site-nav">
         <a href="produkty.html">Produkty</a>
         <a href="o-nas.html">O nás</a>
-        <a href="kosik-krok1.html" class="btn-cart cart-badge"><img src="../assets/logo/shopping-cart.png" alt="Košík" style="height:18px"><span class="muted" style="margin-left:6px">Košík</span><span class="cart-count">0</span></a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="kosik-krok1.html" class="desktop-cart btn-cart cart-badge"><img src="../assets/logo/shopping-cart.png" alt="Košík" style="height:18px"><span class="muted" style="margin-left:6px">Košík</span><span class="cart-count">0</span></a>
       </nav>
       <div class="hamburger-menu" aria-hidden="true">
-        <a href="index.html">Domů</a>
-        <a href="kategorie.html">Kategorie</a>
+        <a href="produkty.html">Produkty</a>
+        <a href="o-nas.html">O nás</a>
         <a href="kontakt.html">Kontakt</a>
       </div>
     </div>
@@ -32,13 +33,19 @@
       <section style="flex:1">
         <form action="kosik-krok3.html" method="get" class="card input-row">
           <label>Jméno <input name="name" required></label>
+          <label>Příjmení <input name="surname" required></label>
+          <label>Email <input name="email" type="email" required></label>
+          <label>Telefon <input name="phone" required></label>
           <label>Adresa <input name="address" required></label>
           <label>Město <input name="city" required></label>
           <label>PSČ <input name="zip" required></label>
+
           <label>Způsob dopravy
             <select name="shipping">
-              <option>Česká pošta - 149 Kč</option>
-              <option>PPL - 199 Kč</option>
+              <option class="shipping-option">Česká pošta - 149 Kč</option>
+              <option class="shipping-option">PPL - 199 Kč</option>
+              <option class="shipping-option">Zásilkovna - 139 Kč</option>
+              <option class="shipping-option">Osobní odběr - Zdarma</option>
             </select>
           </label>
           <div style="margin-top:1rem"><button class="btn btn-primary">Pokračovat k platbě</button></div>
@@ -47,15 +54,49 @@
       <aside style="width:320px">
         <div class="cart-summary card">
           <h4>Souhrn</h4>
-          <div>Produkty: 12 990 Kč</div>
-          <div>Poštovné: 149 Kč</div>
-          <div style="font-weight:700; margin-top:0.5rem">Celkem: 13 139 Kč</div>
+          <div>Produkty: <span id="cart-total-products">0 Kč</span></div>
+          <div>Poštovné: <span id="cart-shipping">149 Kč</span></div>
+          <div style="font-weight:700; margin-top:0.5rem">Celkem: <span id="cart-grand-total">0 Kč</span></div>
         </div>
       </aside>
     </div>
   </main>
   <script src="../assets/js/cart.js"></script>
   <script src="../assets/js/header-nav.js"></script>
+  <script>
+    function updateCartSummary() {
+      const cart = window.cartHelpers ? window.cartHelpers.getCart() : [];
+      const totalProductsPrice = window.cartHelpers ? window.cartHelpers.totalPrice() : 0;
+      const formattedPrice = window.cartHelpers ? window.cartHelpers.formatPrice(totalProductsPrice) : '0 Kč';
+      
+      // Get shipping cost from select dropdown
+      const shippingSelect = document.querySelector('select[name="shipping"]');
+      let shippingPrice = 149;
+      if (shippingSelect) {
+        const shippingText = shippingSelect.value;
+        const match = shippingText.match(/(\d+)\s*Kč/);
+        shippingPrice = match ? parseInt(match[1], 10) : 149;
+      }
+      
+      const grandTotal = totalProductsPrice + shippingPrice;
+      const formattedShipping = window.cartHelpers ? window.cartHelpers.formatPrice(shippingPrice) : shippingPrice + ' Kč';
+      const formattedGrandTotal = window.cartHelpers ? window.cartHelpers.formatPrice(grandTotal) : grandTotal + ' Kč';
+      
+      document.getElementById('cart-total-products').textContent = formattedPrice;
+      document.getElementById('cart-shipping').textContent = formattedShipping;
+      document.getElementById('cart-grand-total').textContent = formattedGrandTotal;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartSummary();
+      
+      // Update when shipping method changes
+      const shippingSelect = document.querySelector('select[name="shipping"]');
+      if (shippingSelect) {
+        shippingSelect.addEventListener('change', updateCartSummary);
+      }
+    });
+  </script>
   <footer class="site-footer"><div class="container">© 2026 DrumShop</div></footer>
 </body>
 </html>
