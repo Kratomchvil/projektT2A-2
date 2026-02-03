@@ -25,6 +25,7 @@
     background: transparent !important;
     box-shadow: none !important;
     border-radius: 0 !important;
+    background-color: #f97316;
   }
   
   .mobile-cart img {
@@ -36,6 +37,7 @@
     font-size: 0.7rem;
     padding: 0.08rem 0.35rem;
     margin-left: 0.15rem;
+  
   }
   
   .brand {
