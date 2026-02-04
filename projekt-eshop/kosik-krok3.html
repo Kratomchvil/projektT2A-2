@@ -29,7 +29,7 @@
     </div>
   </header>
   <main class="container">
-    <h1>3. Platba</h1>
+    <h1 style="font-size: 40px; text-align: center; background-color: #111; border-radius: 10px;">3. Platba</h1>
     <div style="display:flex; gap:1rem; margin-top:1rem">
       <section style="flex:1">
         <form action="kosik-potvrzeni.html" method="get" class="card input-row">
@@ -37,11 +37,15 @@
             <select name="payment">
               <option>Platba kartou</option>
               <option>Bankovní převod</option>
-              <option>Dobírka</option>
+              <option>Dobírka - 39 Kč</option>
             </select>
           </label>
-          <label>Jméno na kartě <input name="cardname"></label>
-          <label>Číslo karty <input name="cardnumber"></label>
+          <label>Jméno na kartě<br> <input name="cardname" required></label>
+          <label>Číslo karty <br><input name="cardnumber" required></label>
+          <label >Apple pay:<img src="pay1.png" alt="applepay"></label> 
+          <label>Google pay:<img src="pay2.jpg" alt="googlepay"></label>
+          <label>Souhlasím s obchodními podmínky <input type="checkbox" required></label>
+
           <div style="margin-top:1rem"><button class="btn btn-primary">Dokončit objednávku</button></div>
         </form>
       </section>
