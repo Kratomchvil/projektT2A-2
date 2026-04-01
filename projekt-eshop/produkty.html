@@ -31,16 +31,15 @@
   </header>
 
   <main class="container">
-    <h1>Produkty</h1>
+    <h1 style="font-size: 50px; text-align: center; background-color: #111; border-radius: 10px;">Produkty</h1>
     <div style="display:flex; gap:1rem; margin-top:1rem;">
       <aside class="product-filter-aside">
         <div class="card">
-          <h4>Filtr</h4>
-          <div class="muted">Kategorie</div>
+          <h4 style="font-size: 30px; text-align: center; background-color: #111; border-radius: 10px;">Filtr</h4>
+          <div class="muted"><u>Kategorie:</u></div>
           <ul>
             <li><a href="?category=sets" data-filter="sets">Sety</a></li>
             <li><a href="?category=cymbals" data-filter="cymbals">Činely</a></li>
-                <!-- 'Bubny' removed per request -->
             <li><a href="?category=hardware" data-filter="hardware">Hardware</a></li>
             <li><a href="?category=sticks" data-filter="sticks">Paličky / kartáče</a></li>
             <li><a href="?category=accessories" data-filter="accessories">Příslušenství</a></li>
@@ -50,7 +49,7 @@
         </div>
       </aside>
       <section style="flex:1">
-        <div class="product-list">
+        <div class="product-list" style="display: grid; grid-template-columns:repeat(2, 350px); justify-content: center;">
           <!-- 30 product cards with data-category -->
           <div class="card product-card" data-category="sets"><a class="thumb"></a><img src="https://www.drumcenter.cz/bin/goods_images/produkt_6/102066_img_67a62d6517b67_1.jpg" alt="Standard Drum Set"></a><h3 class="title">Standard Drum Set</h3><div class="muted">5-dílný akustický set</div><div class="price">12 990 Kč</div><a href="produkty-detail.html?product=Standard+Drum+Set" class="btn btn-primary">Koupit</a></div>
           <div class="card product-card" data-category="sets"><a class="thumb" ><img src="https://www.drumcenter.cz/bin/goods_images/produkt_15/74815_img_4e8ec1147ce18_1.jpg" alt="Compact Jazz Set"></a><h3 class="title">Compact Jazz Set</h3><div class="muted">Pro menší prostory</div><div class="price">9 490 Kč</div><a href="produkty-detail.html?product=Compact+Jazz+Set" class="btn btn-primary">Koupit</a></div>
@@ -58,9 +57,9 @@
   
           <div class="card product-card" data-category="drums"><a class="thumb" ><img src="https://www.drumcenter.cz/bin/goods_images/produkt_1/100381_img_63e242fa0a25a_mpnmp3600bmb.png" alt="Snare Drum"></a><h3 class="title">MAPEX</h3><div class="muted">MPX Maple/poplar 13x6"</div><div class="price">3 490 Kč</div><a href="produkty-detail.html?product=MAPEX+Snare" class="btn btn-primary">Koupit</a></div>
 
-          <div class="card product-card" data-category="cymbals"><a class="thumb" ><img src="https://img.kytary.com/ESHOP_CZ/nahled_v5x/0/638769502282766667/cb8aae1a/65356295/zildjian-14-s-series-mastersound-hi-hat.avif" alt="Hi-Hat 14"></a><h3 class="title">Zildjian Hit-Hat 14"</h3><div class="muted">Pečlivě vysoustružené činely mají bohatý hammering a briliantový povrch, který otvírá jejich zvuk a nabízí jasný, třpytivý tón.</div><div class="price">5 290 Kč</div><a href="produkty-detail.html?product=Hi-Hat+14" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="cymbals"><a class="thumb" ><img src="https://img.kytary.com/ESHOP_CZ/nahled_v5x/0/638769502282766667/cb8aae1a/65356295/zildjian-14-s-series-mastersound-hi-hat.avif" alt="Hi-Hat 14"></a><h3 class="title">Zildjian Hit-Hat 14"</h3><div class="muted">Důrazná Hit-Hat na dokonalý rytmus.</div><div class="price">5 290 Kč</div><a href="produkty-detail.html?product=Hi-Hat+14" class="btn btn-primary">Koupit</a></div>
 
-          <div class="card product-card" data-category="cymbals"><a class="thumb" ><img src="https://img.kytary.com/ESHOP_CZ/nahled_v5x/0/636707045959330000/bab827b3/64281679/zildjian-16-k-custom-dark-crash.avif" alt="Crash 16"></a><h3 class="title">Zildjian Crash 16"</h3><div class="muted">Zvuk činelu z řady je hluboký, teplý a expresivní, ale přes svůj temný charakter se prosadí v mnoha žánrech.</div><div class="price">9 290 Kč</div><a href="produkty-detail.html?product=Crash+16" class="btn btn-primary">Koupit</a></div>
+          <div class="card product-card" data-category="cymbals"><a class="thumb" ><img src="https://img.kytary.com/ESHOP_CZ/nahled_v5x/0/636707045959330000/bab827b3/64281679/zildjian-16-k-custom-dark-crash.avif" alt="Crash 16"></a><h3 class="title">Zildjian Crash 16"</h3><div class="muted">Kvalitní Crash pro váš set</div><div class="price">9 290 Kč</div><a href="produkty-detail.html?product=Crash+16" class="btn btn-primary">Koupit</a></div>
           <div class="card product-card" data-category="cymbals"><a class="thumb" ><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/638336669313730000/a23c35c8/65159107/zildjian-20-s-dark-ride.avif" alt="Ride 20"></a><h3 class="title">Zildjian Ride 20"</h3><div class="muted">Stabilní rytmický zvuk</div><div class="price">3 990 Kč</div><a href="produkty-detail.html?product=Ride+20" class="btn btn-primary">Koupit</a></div>
           <div class="card product-card" data-category="cymbals"><a class="thumb" ><img src="https://img.kytary.com/eshop_cz/stredni_pdpx/na/636697654664330000/cc3d10b3/31061748/meinl-8-hcs-splash.avif" alt="Splash 8"></a><h3 class="title">Meinl Splash 8"</h3><div class="muted">Krátký jasný zásah</div><div class="price">1 190 Kč</div><a href="produkty-detail.html?product=Splash+8" class="btn btn-primary">Koupit</a></div>
 
