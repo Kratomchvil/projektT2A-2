@@ -16,12 +16,10 @@
     return parseInt(cleaned, 10) || 0;
   }
   
-  // Format number as Czech currency
   function formatPrice(num){
     return String(num).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' Kč';
   }
   
-  // addItem accepts either a string (name) or object { name, img, qty, price }
   function addItem(item){
     if(!item) return;
     let name = typeof item === 'string' ? item : (item.name || 'Produkt');
