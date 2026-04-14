@@ -37,13 +37,12 @@
             <select name="payment">
               <option>Platba kartou</option>
               <option>Bankovní převod</option>
-              <option>Dobírka - 39 Kč</option>
             </select>
           </label>
+          <label class="pay">Apple pay:<img src="/assets/logo/apay1.png" alt="applepay" height="70px" width="70px" style="border-radius: 10px; border: #111 solid 3px; display: flex; align-items: center;"></label> 
+          <label class="pay">Google pay:<img src="/assets/logo/pay2.jpg" alt="googlepay" height="70px" width="70px" style="border-radius: 10px; border: #111 solid 3px; display: flex; align-items: center;"></label>
           <label>Jméno na kartě<br> <input name="cardname" required></label>
           <label>Číslo karty <br><input name="cardnumber" required></label>
-          <label >Apple pay:<img src="/assets/logo/apay1.png" alt="applepay" height="70px" width="70px" style="border-radius: 10px; border: #111 solid 3px;"></label> 
-          <label>Google pay:<img src="/assets/logo/pay2.jpg" alt="googlepay" height="70px" width="70px" style="border-radius: 10px; border: #111 solid 3px;"></label>
           <label>Souhlasím s obchodními podmínky <input type="checkbox" required></label>
 
           <div style="margin-top:1rem"><button class="btn btn-primary">Dokončit objednávku</button></div>
@@ -52,13 +51,50 @@
       <aside style="width:320px">
         <div class="cart-summary card">
           <h4>Souhrn</h4>
-          <div>Produkty: 12 990 Kč</div>
-          <div>Poštovné: 149 Kč</div>
-          <div style="font-weight:700; margin-top:0.5rem">Celkem: 13 139 Kč</div>
+          <div>Produkty: <span id="cart-total-products">0 Kč</span></div>
+          <div>Poštovné: <span id="cart-shipping">0 Kč</span></div>
+          <div style="font-weight:700; margin-top:0.5rem">Celkem: <span id="cart-grand-total">0 Kč</span></div>
         </div>
       </aside>
     </div>
   </main>
+  <script>
+    function updateCartSummary() {
+      const cart = window.cartHelpers ? window.cartHelpers.getCart() : [];
+      const totalProductsPrice = window.cartHelpers ? window.cartHelpers.totalPrice() : 0;
+      const formattedPrice = window.cartHelpers ? window.cartHelpers.formatPrice(totalProductsPrice) : '0 Kč';
+      
+      // Get shipping cost from select dropdown
+      const shippingSelect = document.querySelector('select[name="shipping"]');
+      let shippingPrice = 0;
+      if (shippingSelect) {
+        const shippingText = shippingSelect.value;
+        const match = shippingText.match(/(\d+)\s*Kč/);
+        shippingPrice = match ? parseInt(match[1], 10) : 0;
+      }
+      
+      const grandTotal = totalProductsPrice + shippingPrice;
+      const formattedShipping = window.cartHelpers ? window.cartHelpers.formatPrice(shippingPrice) : shippingPrice + ' Kč';
+      const formattedGrandTotal = window.cartHelpers ? window.cartHelpers.formatPrice(grandTotal) : grandTotal + ' Kč';
+      
+      document.getElementById('cart-total-products').textContent = formattedPrice;
+      document.getElementById('cart-shipping').textContent = formattedShipping;
+      document.getElementById('cart-grand-total').textContent = formattedGrandTotal;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      updateCartSummary();
+      
+      // Update when shipping method changes
+      const shippingSelect = document.querySelector('select[name="shipping"]');
+      if (shippingSelect) {
+        shippingSelect.addEventListener('change', updateCartSummary);
+      }
+    });
+  </script>
+
+
+
   <script src="../assets/js/cart.js"></script>
   <script src="../assets/js/header-nav.js"></script>
   <footer class="site-footer"><div class="container">© 2026 DrumShop</div></footer>

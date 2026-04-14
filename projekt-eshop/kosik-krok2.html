@@ -47,7 +47,7 @@
               <option class="shipping-option">Česká pošta - 149 Kč</option>
               <option class="shipping-option">PPL - 199 Kč</option>
               <option class="shipping-option">Zásilkovna - 139 Kč</option>
-              <option class="shipping-option">Osobní odběr - Zdarma</option>
+              <option class="shipping-option">Osobní odběr (Praha) - Zdarma</option>
             </select>
           </label>
           <div style="margin-top:1rem"><button class="btn btn-primary">Pokračovat k platbě</button></div>
@@ -57,7 +57,7 @@
         <div class="cart-summary card">
           <h4>Souhrn</h4>
           <div>Produkty: <span id="cart-total-products">0 Kč</span></div>
-          <div>Poštovné: <span id="cart-shipping">149 Kč</span></div>
+          <div>Poštovné: <span id="cart-shipping">0 Kč</span></div>
           <div style="font-weight:700; margin-top:0.5rem">Celkem: <span id="cart-grand-total">0 Kč</span></div>
         </div>
       </aside>
@@ -73,11 +73,11 @@
       
       // Get shipping cost from select dropdown
       const shippingSelect = document.querySelector('select[name="shipping"]');
-      let shippingPrice = 149;
+      let shippingPrice = 0;
       if (shippingSelect) {
         const shippingText = shippingSelect.value;
         const match = shippingText.match(/(\d+)\s*Kč/);
-        shippingPrice = match ? parseInt(match[1], 10) : 149;
+        shippingPrice = match ? parseInt(match[1], 10) : 0;
       }
       
       const grandTotal = totalProductsPrice + shippingPrice;

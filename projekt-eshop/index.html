@@ -42,6 +42,12 @@
         <img src="https://i.pinimg.com/originals/ea/78/84/ea7884e6a9839c5d51155cc7d432753e.jpg" alt="Drum set">
       </div>
     </section>
+    <div class = "searchbar">
+      <label for="search"></label>
+      <input type="text" id="search" placeholder="Zadejte název produktu..." style="width:90%; padding:0.5rem; border-radius:10px; border:4px solid #ccc"
+      oninput="handleSearch(this.value)"> 
+      <button class="btn btn-ghost" id="search-btn"><a href="produkty.html"><img src="/assets/logo/search.png" alt="search" style="height: 10px;"></a></button>
+    </div>
 
     <section class="featured">
       <h2 style="font-size: 55px; text-align: center; background-color: #111; border-radius: 10px;">Nejprodávanější produkty</h2>
